@@ -20,12 +20,23 @@ end
 
 registered_apps = RegisteredApp.all
 
-300.times do
-  Event.create!(
-    name: Faker::Hacker.verb,
-    registered_app: registered_apps.sample,
-  )
+%w{collect page_load btn_click}.each do |event_name|
+#["collect", "page_load", "btn_click"].each do |event_name|
+  100.times do
+    # create event from sample registered app using event_name
+    Event.create!(
+      name: event_name,
+      registered_app: registered_apps.sample
+    )
+  end
 end
+
+# 300.times do
+#   Event.create!(
+#     name: Faker::Hacker.verb,
+#     registered_app: registered_apps.sample
+#   )
+# end
 
 puts "Seed Data Created"
 puts "#{User.count} users created"
