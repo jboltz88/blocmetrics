@@ -1,0 +1,14 @@
+<div class="container"
+  <div class="media">
+    <div class="media-body">
+      <h1 class="media-heading">
+          <%= @registered_app.name %>
+          <br>
+          <small>
+            <%= @registered_app.url %><br><br>
+          </small>
+          <%= link_to "Delete Application", user_registered_app_path, method: :delete, class: 'btn btn-danger' %>
+      </h1>
+    </div>
+  </div>
+</div>
