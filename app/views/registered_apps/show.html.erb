@@ -7,8 +7,13 @@
           <small>
             <%= @registered_app.url %><br><br>
           </small>
-          <%= link_to "Delete Application", user_registered_app_path, method: :delete, class: 'btn btn-danger' %>
       </h1>
+      <h4>
+        <% @events.each do |event| %>
+          <%= event.name %><br>
+        <% end %>
+      </h4><br>
+      <%= link_to "Delete Application", user_registered_app_path, method: :delete, class: 'btn btn-danger' %>
     </div>
   </div>
 </div>

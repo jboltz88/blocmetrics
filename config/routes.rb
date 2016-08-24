@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   resources :users, only: [] do
-    resources :registered_apps
+    resources :registered_apps do
+      resources :events, only: [:create]
+    end
   end
-    
+
   devise_for :users
 
   if Rails.env.development?
