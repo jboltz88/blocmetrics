@@ -17,4 +17,8 @@ Rails.application.routes.draw do
 
   get 'welcome/show'
   root to: 'welcome#show'
+
+  namespace :api, defaults: { format: :json } do
+      resources :events, only: [:create]
+  end
 end
