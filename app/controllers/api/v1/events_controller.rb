@@ -1,5 +1,6 @@
-class API::EventsController < ApplicationController
+class API::V1::EventsController < ApplicationController
   skip_before_action :verify_authenticity_token
+  skip_before_action :authenticate_user!
   before_filter :set_access_control_headers
 
   def set_access_control_headers
@@ -9,9 +10,13 @@ class API::EventsController < ApplicationController
   end
 
   def create
-    registered_application = RegisteredApplication.find_by(url: request.env['HTTP_ORIGIN'])
-    if registered_application.is_blank?
-      render json: "Unregistered application", status: :unprocessable_entity
+    #Rails.logger.info ">>>>>> #{request.env['HTTP_ORIGIN']}"
+    @registered_app = RegisteredApp.find_by(url: request.env['HTTP_ORIGIN'])
+    #Rails.logger.info ">>>>>>  App: #{@registered_app.inspect}"
+
+    unless @registered_app.present?
+      #Rails.logger.info ">>>> no registered app"
+      render(json: "Unregistered application", status: :unprocessable_entity) and return
     end
 
     @event = @registered_app.events.new(event_params)
