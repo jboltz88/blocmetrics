@@ -13,12 +13,8 @@
           <div class="row">
             <%= "Events for #{@registered_app.name}" %>
           </div>
-          <% @event_groups.each do |group| %>
-            <div class="col-md-4">
-              <%= group[0] %>
-            </div>
-            <%= group[1].count %><br>
-          <% end %>
+          <%= pie_chart @registered_app.events.group(:name).count %>
+          <%= line_chart @registered_app.events.group_by_day(:created_at).count %>
         </h4><br>
       </div>
       <%= link_to "Delete Application", user_registered_app_path, method: :delete, class: 'btn btn-danger' %>

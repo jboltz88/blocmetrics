@@ -29,14 +29,18 @@ gem 'figaro', '1.0'
 
 gem 'bcrypt'
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'chartkick'
+
+gem 'groupdate'
+
+gem 'pg'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
 group :test do
   gem 'database_cleaner'
   gem 'email_spec'
@@ -58,7 +62,6 @@ group :development, :test do
 end
 
 group :development do
-  gem 'sqlite3'
   gem 'better_errors' #Enhanced Rails error page with built in rails console
   gem 'binding_of_caller' #required by better_errors
   gem 'quiet_assets' #Less noisy but easier to debug server output
@@ -68,6 +71,5 @@ group :development do
 end
 
 group :production do
-  gem 'pg', '~> 0.18.4'
   gem 'rails_12factor'
 end
