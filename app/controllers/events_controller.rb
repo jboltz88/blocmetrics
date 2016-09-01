@@ -9,6 +9,7 @@ class EventsController < ApplicationController
     else
       flash[:alert] = "There was an error saving the event."
       redirect_to @registered_app
+    end
   end
 
   private
