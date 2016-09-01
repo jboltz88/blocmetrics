@@ -5,7 +5,7 @@ class RegisteredAppsController < ApplicationController
 
   def show
     @registered_app = current_user.registered_apps.find(params[:id])
-    @event_groups = @registered_app.events.group_by(&:name)
+    # @event_groups = @registered_app.events.group_by(&:name)
     # event_group ["name", [array of events with that name]]
   end
 
