@@ -77,7 +77,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.default_url_options = { host: 'gentle-caverns-64181.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'blocmetrics-boltz.herokuapp.com' }
   config.action_mailer.perform_deliveries = true
 
 end
