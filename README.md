@@ -2,10 +2,10 @@
 
 When registering an application with Blocmetrics, be sure to include the full URL. For example:
 
-`http://www.justinboltz.com`  // works
-`http://justinboltz.com`      // doesn't work
-`www.justinboltz.com`         // doesn't work
-`justinboltz.com`             // doesn't work
+`http://www.justinboltz.com`  // works    
+`http://justinboltz.com`      // doesn't work    
+`www.justinboltz.com`         // doesn't work    
+`justinboltz.com`             // doesn't work    
 
 `https://www.justinboltz.com` // works, but you must allow the site to load unsafe scripts
 
@@ -19,11 +19,13 @@ blocmetrics.report = function(eventName) {
    request.open("POST", "http://blocmetrics-boltz.herokuapp.com/api/v1/events", true);
    request.setRequestHeader('Content-Type', 'application/json');
    request.send(JSON.stringify(event));
-};```
+};
+```
 
 Then add scripts for whatever event you want to track, for example:
 
 ```
 $(document).ready(function() {
   blocmetrics.report("page load");
-});```
+});
+```
