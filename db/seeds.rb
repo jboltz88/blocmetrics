@@ -8,6 +8,13 @@
   user.save!
 end
 
+user = User.new(
+  email: 'boltz.justin@gmail.com',
+  password: 'password'
+)
+user.skip_confirmation!
+user.save!
+
 users = User.all
 
 30.times do
@@ -20,13 +27,18 @@ end
 
 registered_apps = RegisteredApp.all
 
+def rand_time(from, to=Time.now)
+  Time.at(rand_in_range(from.to_f, to.to_f))
+end
+
 %w{collect page_load btn_click}.each do |event_name|
 #["collect", "page_load", "btn_click"].each do |event_name|
   100.times do
     # create event from sample registered app using event_name
     Event.create!(
       name: event_name,
-      registered_app: registered_apps.sample
+      registered_app: registered_apps.sample,
+      created_at: Faker::Time.between(DateTime.now - 30, DateTime.now)
     )
   end
 end
